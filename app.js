@@ -20,8 +20,10 @@ function makeGrid(squaresPerSide = 16){
         for(let j = 0; j < squaresPerSide; j++){
             const cell = document.createElement("div");
             cell.classList.add("cell");
+            cell.opacity = 0;
             cell.addEventListener("mouseenter", () => {
-                cell.classList.add("hovered-cell")
+                cell.opacity += 0.1;
+                cell.style.backgroundColor = `rgba(0, 0, 0, ${cell.opacity})`;
             })
             row.appendChild(cell);
         }
