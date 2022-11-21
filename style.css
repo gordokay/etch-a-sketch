@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  width: fit-content;
+  display: flex;
+  border: 1px solid gainsboro;
+  border-bottom: none;
+}
+
+.row:last-of-type {
+  border-bottom: 1px solid gainsboro;
+}
+
+.cell {
+  width: 16px;
+  height: 16px;
+  border-right: 1px solid gainsboro;
+}
+
+.cell:last-of-type {
+  border-right: none;
+}
