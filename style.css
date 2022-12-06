@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,18 +11,56 @@ body {
 .row {
   width: fit-content;
   display: flex;
-  border: 1px solid gainsboro;
+  border: 1px solid #E1E0E0;
   border-bottom: none;
 }
 
 .row:last-of-type {
-  border-bottom: 1px solid gainsboro;
+  border-bottom: 1px solid #E1E0E0;
 }
 
 .cell {
-  border-right: 1px solid gainsboro;
+  border-right: 1px solid #E1E0E0;
 }
 
 .cell:last-of-type {
   border-right: none;
 }
+
+.color-buttons {
+  display: flex;
+  order: 2;
+}
+
+.color-buttons * {
+  margin: 8px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  cursor: pointer;
+}
+
+.blue {
+  background-color: #2E86AB;
+}
+
+.red {
+  background-color: #F24236;
+}
+
+.yellow {
+  background-color: #F5F749;
+}
+
+.green {
+  background-color: #7DCE82;
+}
+
+.rainbow {
+  background: linear-gradient(90deg, #F24236 0%, #F5F749 30%, #7DCE82 75%, #2E86AB 100%);
+}
+
+button {
+  order: 1;
+}
+
