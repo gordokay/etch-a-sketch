@@ -55,6 +55,7 @@ function makeDrawable() {
 function etchASketch() {
   const dimensionBtn = document.querySelector('button');
   const colorSelectors = document.querySelectorAll('.color-selector');
+  const colorPicker = document.getElementById('color-picker');
   colorSelectors.forEach(colorSelector => {
     colorSelector.addEventListener('click', () => {
       if(getComputedStyle(colorSelector).getPropertyValue('background-color') !== 'rgba(0, 0, 0, 0)') {
@@ -63,6 +64,9 @@ function etchASketch() {
         color = 'rainbow';
       }
     })
+  })
+  colorPicker.addEventListener('input', () => {
+    color = colorPicker.value;
   })
   dimensionBtn.addEventListener('click', () => {
     let dimension = prompt('Enter grid dimension');
