@@ -1,4 +1,5 @@
 const GRID_SIZE = 480;
+let color = 'rainbow';
 
 function makeGrid(cellNumber) {
   if(cellNumber > 100) {
@@ -30,16 +31,17 @@ function deleteGrid() {
 
 function changeColor() {
   if(!this.style.backgroundColor) {
+    this.style.opacity = 0.1;
+  } else if (Number(this.style.opacity) < 1) {
+    this.style.opacity = Number(this.style.opacity) + 0.1;
+  }
+  if(color === 'rainbow') {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
     this.style.backgroundColor = `rgb(${r},${g},${b})`
-    this.style.opacity = 0.1;
   } else {
-    this.style.opacity = Number(this.style.opacity) + 0.1;
-    if(Number(this.style.opacity) === 1) {
-      this.removeEventListener('mouseover', changeColor);
-    }
+    this.style.backgroundColor = color;
   }
 }
  
@@ -52,6 +54,16 @@ function makeDrawable() {
 
 function etchASketch() {
   const dimensionBtn = document.querySelector('button');
+  const colorSelectors = document.querySelectorAll('.color-selector');
+  colorSelectors.forEach(colorSelector => {
+    colorSelector.addEventListener('click', () => {
+      if(getComputedStyle(colorSelector).getPropertyValue('background-color') !== 'rgba(0, 0, 0, 0)') {
+        color = getComputedStyle(colorSelector).getPropertyValue('background-color');
+      } else {
+        color = 'rainbow';
+      }
+    })
+  })
   dimensionBtn.addEventListener('click', () => {
     let dimension = prompt('Enter grid dimension');
     deleteGrid();

@@ -27,12 +27,12 @@ body {
   border-right: none;
 }
 
-.color-buttons {
+.color-selectors {
   display: flex;
   order: 2;
 }
 
-.color-buttons * {
+.color-selector {
   margin: 8px;
   width: 64px;
   height: 64px;
