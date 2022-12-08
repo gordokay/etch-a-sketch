@@ -139,6 +139,11 @@ input {
 }
 
 @media only screen and (max-width: 600px) {
+  body {
+    justify-content: flex-start;
+    margin: 0;
+  }
+
   h1 + div {
     flex-direction: column;
   }
@@ -156,6 +161,7 @@ input {
 
   h1 {
     transform: none;
+    margin: 4px;
   }
 
   .controls {
