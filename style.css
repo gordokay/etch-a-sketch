@@ -19,11 +19,11 @@ body {
   border-bottom: 1px solid #E1E0E0;
 }
 
-.cell {
+.square {
   border-right: 1px solid #E1E0E0;
 }
 
-.cell:last-of-type {
+.square:last-of-type {
   border-right: none;
 }
 

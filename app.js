@@ -1,79 +1,97 @@
-const GRID_SIZE = 480;
-let color = 'rainbow';
+function etchASketch() {
+  const GRID_SIZE = 480;
+  const SQUARES_PER_SIDE = 16;
+  const grid = document.querySelector('.grid');
+  const colorButtons = document.querySelectorAll('.palette button');
+  const colorPicker = document.querySelector('input');
+  const clearButton = document.querySelector('.controls button');
+  const squaresPerSideSelector = document.querySelector('select');
 
-function makeGrid(cellNumber) {
-  if(cellNumber > 100) {
-    cellNumber = 100;
-  }
-  for(let i = 0; i < cellNumber; i++) {
-    const row = document.createElement('div');
-    row.classList.add('row');
-    for(let j = 0; j < cellNumber; j++) {
-      const cell = document.createElement('div');
-      cell.classList.add('cell');
-      cell.style.width = `${GRID_SIZE / cellNumber}px`;
-      cell.style.height = `${GRID_SIZE / cellNumber}px`;
-      row.appendChild(cell);
+  let color = 'rainbow';
+
+  function makeGrid(squaresPerSide) {
+    for(let i = 0; i < squaresPerSide; i++) {
+      const row = document.createElement('div');
+      row.classList.add('row');
+      for(let j = 0; j < squaresPerSide; j++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        square.style.width = `${GRID_SIZE / squaresPerSide}px`;
+        square.style.height = `${GRID_SIZE / squaresPerSide}px`;
+        row.appendChild(square);
+      }
+      grid.appendChild(row);
     }
-    document.body.appendChild(row);
   }
-  makeDrawable();
-}
 
-function deleteGrid() {
-  for(let row of document.querySelectorAll('.row')) {
-    for(let child of row.childNodes) {
-      row.removeChild(child);
+  function makePaintable() {
+    const squares = document.querySelectorAll('.square');
+    for(let square of squares) {
+      square.addEventListener('mouseover', changeColor);
     }
-    document.body.removeChild(row);
   }
-}
 
-function changeColor() {
-  if(!this.style.backgroundColor) {
-    this.style.opacity = 0.1;
-  } else if (Number(this.style.opacity) < 1) {
-    this.style.opacity = Number(this.style.opacity) + 0.1;
+  function connectControls() {
+    colorButtons.forEach(colorButton => {
+      colorButton.addEventListener('click', () => {
+        color = colorButton.className;
+      })
+    })
+
+    colorPicker.addEventListener('input', () => {
+      color = colorPicker.value;
+    })
+
+    clearButton.addEventListener('click', () => {
+      clearGrid();
+    })
+
+    squaresPerSideSelector.addEventListener('change', () => {
+      deleteGrid();
+      makeGrid(Number(squaresPerSideSelector.value));
+      makePaintable();
+    })
   }
-  if(color === 'rainbow') {
+  
+  function deleteGrid() {
+    for(let row of document.querySelectorAll('.row')) {
+      for(let child of row.childNodes) {
+        row.removeChild(child);
+      }
+      grid.removeChild(row);
+    }
+  }
+
+  function clearGrid() {
+    document.querySelectorAll('.square').forEach(square => {
+      square.style.backgroundColor = '';
+    })
+  }
+  
+  function changeColor() {
+    if(!this.style.backgroundColor) {
+      this.style.opacity = 0.1;
+    } else if (Number(this.style.opacity) < 1) {
+      this.style.opacity = Number(this.style.opacity) + 0.1;
+    }
+
+    if(color === 'rainbow') {
+      this.style.backgroundColor = getRandomColor();
+    } else {
+      this.style.backgroundColor = color;
+    }
+  }
+
+  function getRandomColor() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
-    this.style.backgroundColor = `rgb(${r},${g},${b})`
-  } else {
-    this.style.backgroundColor = color;
+    return `rgb(${r},${g},${b})`;
   }
-}
- 
-function makeDrawable() {
-  const cells = document.querySelectorAll('.cell');
-  for(let cell of cells) {
-    cell.addEventListener('mouseover', changeColor);
-  }
-}
 
-function etchASketch() {
-  const dimensionBtn = document.querySelector('button');
-  const colorSelectors = document.querySelectorAll('.color-selector');
-  const colorPicker = document.getElementById('color-picker');
-  colorSelectors.forEach(colorSelector => {
-    colorSelector.addEventListener('click', () => {
-      if(getComputedStyle(colorSelector).getPropertyValue('background-color') !== 'rgba(0, 0, 0, 0)') {
-        color = getComputedStyle(colorSelector).getPropertyValue('background-color');
-      } else {
-        color = 'rainbow';
-      }
-    })
-  })
-  colorPicker.addEventListener('input', () => {
-    color = colorPicker.value;
-  })
-  dimensionBtn.addEventListener('click', () => {
-    let dimension = prompt('Enter grid dimension');
-    deleteGrid();
-    makeGrid(dimension);
-  })
-  makeGrid(16);
+  makeGrid(SQUARES_PER_SIDE);
+  makePaintable();
+  connectControls();
 }
 
 etchASketch();
