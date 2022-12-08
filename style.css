@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
+:root {
+  --clr-background: #FFFFF6;
+  --clr-foreground: #140E1B;
+  --clr-grid: #E9EBED;
+}
+
+:root.dark {
+  --clr-foreground: #FFFFF6;
+  --clr-background: #140E1B;
+  --clr-grid: #281C36;
+}
+
 body {
   margin: 0;
   margin-top: 16px;
@@ -7,7 +19,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #FFFBFA;
+  background: var(--clr-background);
+  color: var(--clr-foreground);
   font-family: 'Space Mono', monospace;
 }
 
@@ -29,10 +42,11 @@ h1 {
 .controls {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
-.palette button {
+.palette button,
+body > button {
   width: 48px;
   height: 48px;
   border: none;
@@ -60,21 +74,32 @@ h1 {
 
 .palette .eraser {
   background: transparent;
-  border: 1px solid black;
+  border: 1px solid var(--clr-foreground);
 }
 
 label {
   display: block;
-  margin-bottom: 4px;
 }
 
-.controls button {
+.controls button,
+body > button {
   font: inherit;
   background: #FFF275;
-  border: 1px solid black;
+  border: 1px solid #140E1B;
   width: 50%;
   min-width: fit-content;
   padding-block: 0.5em;
+}
+
+.toggle {
+  align-self: flex-end;
+  margin-right: 10%;
+  font-size: 0.8em;
+  width: fit-content;
+  height: fit-content;
+  background: transparent;
+  color: var(--clr-foreground);
+  border: 1px solid var(--clr-foreground);
 }
 
 button, 
@@ -93,16 +118,16 @@ input {
 }
 
 .square {
-  border: 1px solid #EDE9EB;
+  border: 1px solid var(--clr-grid);
   border-right: none;
   border-bottom: none;
   box-sizing: border-box;
 }
 
 .square:last-child {
-  border-right: 1px solid #EDE9EB;
+  border-right: 1px solid var(--clr-grid);
 }
 
 .row:last-child .square {
-  border-bottom: 1px solid #EDE9EB;
+  border-bottom: 1px solid var(--clr-grid);
 }

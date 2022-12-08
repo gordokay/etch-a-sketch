@@ -1,6 +1,7 @@
 function etchASketch() {
   const GRID_SIZE = 480;
   const SQUARES_PER_SIDE = 16;
+  const root = document.querySelector(':root');
   const grid = document.querySelector('.grid');
   const colorButtons = document.querySelectorAll('.palette button');
   const colorPicker = document.querySelector('input');
@@ -47,6 +48,14 @@ function etchASketch() {
   }
 
   function connectControls() {
+    document.querySelector('.toggle').addEventListener('click', () => {
+      if(root.className !== 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    })
+    
     grid.addEventListener('mousedown', e => {
       e.preventDefault();
       isMouseDown = true;
