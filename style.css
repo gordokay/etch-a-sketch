@@ -81,6 +81,12 @@ label {
   display: block;
 }
 
+select {
+  font: inherit;
+  margin-top: 0.25em;
+  padding: 0.25em 0.5em;
+}
+
 .controls button,
 body > button {
   font: inherit;
