@@ -55,7 +55,7 @@ h1 {
 }
 
 .rainbow {
-  background: linear-gradient(90deg, #F24236 0%, #F5F749 30%, #7DCE82 75%, #2E86AB 100%);
+  background: linear-gradient(45deg, #F55536 0%, #FFF275 25%, #53CAA1 75%, #5386E4 100%);
 }
 
 .palette .eraser {
