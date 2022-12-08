@@ -1,66 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
 body {
   margin: 0;
+  margin-top: 16px;
   padding: 0;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background: #FFFBFA;
+  font-family: 'Space Mono', monospace;
 }
 
-.row {
-  width: fit-content;
+h1 + div {
   display: flex;
-  border: 1px solid #E1E0E0;
-  border-bottom: none;
+  gap: 16px;
 }
 
-.row:last-of-type {
-  border-bottom: 1px solid #E1E0E0;
+h1 {
+  transform: translateX(-168px);
+  margin-bottom: -4px;
 }
 
-.square {
-  border-right: 1px solid #E1E0E0;
-}
-
-.square:last-of-type {
-  border-right: none;
-}
-
-.color-selectors {
+.palette {
   display: flex;
-  order: 2;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.color-selector {
-  margin: 8px;
-  width: 64px;
-  height: 64px;
+.controls {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.palette button {
+  width: 48px;
+  height: 48px;
   cursor: pointer;
+  border: none;
 }
 
 .blue {
-  background-color: #2E86AB;
+  background-color: #5386E4;
 }
 
 .red {
-  background-color: #F24236;
+  background-color: #F55536;
 }
 
 .yellow {
-  background-color: #F5F749;
+  background-color: #FFF275;
 }
 
 .green {
-  background-color: #7DCE82;
+  background-color: #53CAA1;
 }
 
 .rainbow {
   background: linear-gradient(90deg, #F24236 0%, #F5F749 30%, #7DCE82 75%, #2E86AB 100%);
 }
 
-button {
-  order: 1;
+.eraser {
+  background: transparent;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.controls button {
+  font: inherit;
+  background: #FFF275;
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+}
+
+.square {
+  border: 1px solid #EDE9EB;
+  border-right: none;
+  border-bottom: none;
+  box-sizing: border-box;
+}
+
+.square:last-child {
+  border-right: 1px solid #EDE9EB;
+}
+
+.row:last-child .square {
+  border-bottom: 1px solid #EDE9EB;
 }
 

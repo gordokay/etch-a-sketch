@@ -16,8 +16,8 @@ function etchASketch() {
       for(let j = 0; j < squaresPerSide; j++) {
         const square = document.createElement('div');
         square.classList.add('square');
-        square.style.width = `${GRID_SIZE / squaresPerSide}px`;
-        square.style.height = `${GRID_SIZE / squaresPerSide}px`;
+        square.style.width = `${Math.floor(GRID_SIZE / squaresPerSide)}px`;
+        square.style.height = `${Math.floor(GRID_SIZE / squaresPerSide)}px`;
         row.appendChild(square);
       }
       grid.appendChild(row);
