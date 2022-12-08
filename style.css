@@ -17,8 +17,7 @@ h1 + div {
 }
 
 h1 {
-  transform: translateX(-168px);
-  margin-bottom: -4px;
+  transform: translate(-168px, 16px);
 }
 
 .palette {
@@ -36,16 +35,15 @@ h1 {
 .palette button {
   width: 48px;
   height: 48px;
-  cursor: pointer;
   border: none;
-}
-
-.blue {
-  background-color: #5386E4;
 }
 
 .red {
   background-color: #F55536;
+}
+
+.blue {
+  background-color: #5386E4;
 }
 
 .yellow {
@@ -60,8 +58,9 @@ h1 {
   background: linear-gradient(90deg, #F24236 0%, #F5F749 30%, #7DCE82 75%, #2E86AB 100%);
 }
 
-.eraser {
+.palette .eraser {
   background: transparent;
+  border: 1px solid black;
 }
 
 label {
@@ -73,6 +72,20 @@ label {
   font: inherit;
   background: #FFF275;
   border: 1px solid black;
+  width: 50%;
+  min-width: fit-content;
+  padding-block: 0.5em;
+}
+
+button, 
+input,
+select {
+  cursor: pointer;
+}
+
+input {
+  width: 48px;
+  height: 48px;
 }
 
 .row {
@@ -93,4 +106,3 @@ label {
 .row:last-child .square {
   border-bottom: 1px solid #EDE9EB;
 }
-

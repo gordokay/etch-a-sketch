@@ -6,6 +6,12 @@ function etchASketch() {
   const colorPicker = document.querySelector('input');
   const clearButton = document.querySelector('.controls button');
   const squaresPerSideSelector = document.querySelector('select');
+  const colorTranslator = {
+    'red': '#F55536',
+    'blue': '#5386E4',
+    'yellow': '#FFF275',
+    'green': '#53CAA1',
+  };
 
   let color = 'rainbow';
 
@@ -34,7 +40,11 @@ function etchASketch() {
   function connectControls() {
     colorButtons.forEach(colorButton => {
       colorButton.addEventListener('click', () => {
-        color = colorButton.className;
+        if(colorButton.className !== 'rainbow' && colorButton.className !== 'eraser') {
+          color = colorTranslator[colorButton.className];
+        } else {
+          color = colorButton.className;
+        }
       })
     })
 
@@ -65,10 +75,17 @@ function etchASketch() {
   function clearGrid() {
     document.querySelectorAll('.square').forEach(square => {
       square.style.backgroundColor = '';
+      square.style.opacity = 1;
     })
   }
   
   function changeColor() {
+    if(color === 'eraser') {
+      this.style.backgroundColor = '';
+      this.style.opacity = 1;
+      return;
+    }
+
     if(!this.style.backgroundColor) {
       this.style.opacity = 0.1;
     } else if (Number(this.style.opacity) < 1) {
