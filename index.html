@@ -5,11 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+  <!-- <script src="app.js" defer></script> -->
   <title>Etch-a-sketch</title>
 </head>
 <body>
-  <button>Choose grid dimensions</button>
+  <!-- <button>Choose grid dimensions</button>
   <div class="color-selectors">
     <div class="blue color-selector"></div>
     <div class="red color-selector"></div>
@@ -17,6 +17,34 @@
     <div class="green color-selector"></div>
     <div class="rainbow color-selector"></div>
     <input type="color" name="color-picker" id="color-picker">
+  </div> -->
+
+  <h1>etch-a-sketch</h1>
+  <div>
+    <div class="palette">
+      <button class="red"></button>
+      <button class="blue"></button>
+      <button class="yellow"></button>
+      <button class="green"></button>
+      <button class="rainbow"></button>
+      <input type="color" name="color-picker" id="color-picker">
+      <button class="eraser"></button>
+    </div>
+    <div class="grid"></div>
+    <div class="controls">
+      <button>clear</button>
+      <label for="squares-per-side">squares per side</label>
+      <select name="squares-per-side" id="squares-per-side">
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="16">16</option>
+        <option value="24">24</option>
+        <option value="36">36</option>
+        <option value="48">48</option>
+        <option value="96">96</option>
+      </select>
+    </div>
   </div>
 </body>
 </html>
