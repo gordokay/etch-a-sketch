@@ -137,3 +137,51 @@ input {
 .row:last-child .square {
   border-bottom: 1px solid var(--clr-grid);
 }
+
+@media only screen and (max-width: 600px) {
+  h1 + div {
+    flex-direction: column;
+  }
+
+  .palette {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .palette button,
+  input {
+    width: 36px;
+    height: 36px;
+  }
+
+  h1 {
+    transform: none;
+  }
+
+  .controls {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .controls button {
+    max-width: fit-content;
+    height: fit-content;
+  }
+
+  .controls div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .toggle {
+    order: 1;
+    transform: none;
+    margin-right: 0;
+    align-self: center;
+    margin-top: 16px;
+    transform: translateX(-122px);
+  }
+}

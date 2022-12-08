@@ -1,5 +1,5 @@
 function etchASketch() {
-  const GRID_SIZE = 480;
+  const GRID_SIZE = 360;
   const SQUARES_PER_SIDE = 16;
   const root = document.querySelector(':root');
   const grid = document.querySelector('.grid');
