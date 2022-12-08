@@ -162,6 +162,7 @@ input {
   h1 {
     transform: none;
     margin: 4px;
+    font-size: 1.25rem;
   }
 
   .controls {
@@ -183,11 +184,10 @@ input {
   }
 
   .toggle {
-    order: 1;
     transform: none;
-    margin-right: 0;
-    align-self: center;
-    margin-top: 16px;
-    transform: translateX(-122px);
+    margin-top: 4px;
+    margin-left: 48px;
+    align-self: flex-start;
+    order: 1;
   }
 }
