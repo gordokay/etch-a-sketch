@@ -35,12 +35,25 @@ function etchASketch() {
   function makePaintable() {
     const squares = document.querySelectorAll('.square');
     for(let square of squares) {
+      //mouse events
       square.addEventListener('mouseover', () => {
         if(isMouseDown) {
           changeColor(square);
         }
       });
       square.addEventListener('mousedown', e => {
+        e.preventDefault();
+        changeColor(square);
+      })
+      //touchevents
+      square.addEventListener('touchmove', e => {
+        let touch = e.touches[0];
+        let newSquare = document.elementFromPoint(touch.clientX, touch.clientY);
+        if(isMouseDown && newSquare && newSquare.classList.contains('square')) {
+          changeColor(newSquare);
+        }
+      });
+      square.addEventListener('touchstart', e => {
         e.preventDefault();
         changeColor(square);
       })
@@ -55,12 +68,18 @@ function etchASketch() {
         root.classList.remove('dark');
       }
     })
-    
+    // mouse events
     grid.addEventListener('mousedown', e => {
       e.preventDefault();
       isMouseDown = true;
     });
     grid.addEventListener('mouseup', () => isMouseDown = false);
+    //touch events
+    grid.addEventListener('touchstart', e => {
+      e.preventDefault();
+      isMouseDown = true;
+    });
+    grid.addEventListener('touchend', () => isMouseDown = false);
 
     colorButtons.forEach(colorButton => {
       colorButton.addEventListener('click', () => {
