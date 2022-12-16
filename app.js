@@ -108,8 +108,8 @@ function etchASketch() {
   
   function deleteGrid() {
     for(let row of document.querySelectorAll('.row')) {
-      for(let child of row.childNodes) {
-        row.removeChild(child);
+      while(row.firstChild) {
+        row.removeChild(row.firstChild);
       }
       grid.removeChild(row);
     }
